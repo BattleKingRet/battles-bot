@@ -51,4 +51,4 @@ bot.on('message', message=>{
     }
 })
 
-bot.login(token);
+bot.login(token).catch(err => console.log(err));
