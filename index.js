@@ -1,17 +1,20 @@
-const Discord = require('discord.js');
-const bot = new Discord.Client();
+const {Client, Attachment} = require('discord.js');
+const bot = new Client();
 
 const token = process.env.token;
 
 const PREFIX = '$';
 
-var version = '1.0.1';
+var version = '1.0.2';
 
 bot.on('ready', () =>{
     console.log('This bot is online');
+    bot.user.setActivity('Ret', {type: 'LISTENING'}).catch(console.error);
 })
  
 bot.on('message', message=>{
+    const user = message.mentions.users.first();
+    const member = message.guild.member(user);
 
     let args = message.content.substring(PREFIX.length).split(" ");
 
@@ -36,7 +39,7 @@ bot.on('message', message=>{
             case 'creatoremail':
                 message.channel.sendMessage('rkwal.007@gmail.com')
                 break; 
-            case 'profile':
+           /* case 'profile':
                 const profile = new Discord.RichEmbed()
                 .setTitle('User Information')
                 .addField('User Name', message.author.username)
@@ -46,8 +49,60 @@ bot.on('message', message=>{
                 .setThumbnail(message.author.avatarURL)
                 .setFooter('Send me some love please, Thnx!')
                 message.channel.sendEmbed(profile);
+                break;*/
+            case 'send':
+                const attachment = new Attachment('https://cbsnews1.cbsistatic.com/hub/i/2016/03/23/38e32f54-b910-4612-8852-be9e0fbdbf73/cat-istock.jpg')
+                message.channel.send(message.author, attachment);
                 break;
+            case 'sendlocal':
+                const attachment2 = new Attachment('./pexels-photo-1174122.jpg');
+                message.channel.send(message.author, attachment2);
+                break;   
+            case 'rules':
+                const attachment3 = new Attachment('./rules.txt')
+                message.channel.send(message.author, attachment3);
+                break;   
+            case 'kick':
+                
+                
 
+                if(user){
+                    
+                    if(member){
+                        member.kick('You were kicked!').then(() =>{
+                            message.reply(`Successfully kicked ${user.tag}`);
+                        }).catch(err =>{
+                           message.reply('I was unable to kick the member');
+                           console.log(err);
+                        });
+                    }else{
+                        message.reply("That user isn\'t in this server")
+
+                    }
+                }else{
+                    message.reply('You need to specify a person!')
+                }
+                break;
+                case 'ban':
+                
+        
+                        if(user){
+                            
+                            if(member){
+                               member.ban({reason: 'you were bad!'}).then(() =>{
+                                   message.reply(`Player was successfully banned! ${user.tag}`)
+                               })
+                            }else{
+                                message.reply("That user isn\'t in this guild")
+        
+                            }
+                        }else{
+                            message.reply('You need to specify a person!')
+                        }
+                        break;
+                case 'cool':
+                    message.react('😎')
+                break;            
     }
 })
 
