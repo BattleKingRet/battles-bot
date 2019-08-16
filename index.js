@@ -105,6 +105,9 @@ bot.on('message', message=>{
                             message.reply('You fkin noob cant ban someone, useless boi')
                         }
                         break;
+            case 'av':
+                        message.reply(message.author.avatarURL)
+                        break;
                            
     }
     if(message.content.startsWith('cool')){
