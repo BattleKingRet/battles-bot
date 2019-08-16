@@ -1,11 +1,9 @@
-const {Client, Attachment} = require('discord.js');
-const bot = new Client();
-
-const token = process.env.token;
+const Discord = require('discord.js');
+const bot = new Discord.Client();
 
 const PREFIX = '$';
 
-var version = '1.0.2';
+var version = '1.0.3';
 
 bot.on('ready', () =>{
     console.log('This bot is online');
@@ -39,7 +37,7 @@ bot.on('message', message=>{
             case 'creatoremail':
                 message.channel.sendMessage('rkwal.007@gmail.com')
                 break; 
-           /* case 'profile':
+            case 'profile':
                 const profile = new Discord.RichEmbed()
                 .setTitle('User Information')
                 .addField('User Name', message.author.username)
@@ -49,8 +47,8 @@ bot.on('message', message=>{
                 .setThumbnail(message.author.avatarURL)
                 .setFooter('Send me some love please, Thnx!')
                 message.channel.sendEmbed(profile);
-                break;*/
-            case 'send':
+                break;
+           /* case 'send':
                 const attachment = new Attachment('https://cbsnews1.cbsistatic.com/hub/i/2016/03/23/38e32f54-b910-4612-8852-be9e0fbdbf73/cat-istock.jpg')
                 message.channel.send(message.author, attachment);
                 break;
@@ -61,10 +59,10 @@ bot.on('message', message=>{
             case 'rules':
                 const attachment3 = new Attachment('./rules.txt')
                 message.channel.send(message.author, attachment3);
-                break;   
+                break;   */
             case 'kick':
                 
-                
+                if(message.member.hasPermission(['KICK_MEMBERS'])){
 
                 if(user){
                     
@@ -81,10 +79,14 @@ bot.on('message', message=>{
                     }
                 }else{
                     message.reply('You need to specify a person!')
+                }}
+                else{
+                    message.reply('You fkin noob cant kick someone, useless boi')
                 }
                 break;
                 case 'ban':
                 
+                    if(message.member.hasPermission(['BAN_MEMBERS'])){
         
                         if(user){
                             
@@ -98,11 +100,25 @@ bot.on('message', message=>{
                             }
                         }else{
                             message.reply('You need to specify a person!')
+                        }}
+                        else{
+                            message.reply('You fkin noob cant ban someone, useless boi')
                         }
                         break;
-                case 'cool':
-                    message.react('😎')
-                break;            
+                           
+    }
+    if(message.content.startsWith('cool')){
+        message.react('😎')
+    }
+    
+    if(message.content.startsWith('creeper')){
+        message.channel.send('aww... man')
+    }
+    if(message.content.startsWith('Creeper')){
+        message.channel.send('aww... man')
+    }
+    if(message.content.startsWith('Cool')){
+        message.react('😎')
     }
 })
 
