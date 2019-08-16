@@ -106,7 +106,16 @@ bot.on('message', message=>{
                         }
                         break;
             case 'av':
+                        if(user){
+                    
+                            if(member){
+                        message.reply(user.avatarURL)
+                    }else{
+                        message.reply('That person isn\'t in this server')
+                    }}
+                    else{
                         message.reply(message.author.avatarURL)
+                    }
                         break;
                            
     }
