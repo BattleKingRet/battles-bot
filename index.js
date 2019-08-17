@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const token = process.env.token;
 const PREFIX = '$';
-
+const math = require('math-expression-evaluator');
 var version = '1.0.3';
 
 bot.on('ready', () =>{
@@ -147,6 +147,67 @@ bot.on('message', message=>{
                             message.channel.send({embed}).catch(e => logger.error(e));
                         }
                     break; 
+            case 'server':
+                        let embed = new Discord.RichEmbed()
+
+                        .setColor('RANDOM')
+                  
+                        .setThumbnail(message.guild.iconURL)
+                  
+                        .setTitle(`**Showing Details Of** ${message.guild.name}`)
+                  
+                        .addField('**Server Region**',`${message.guild.region}`,true)
+                  
+                        .addField('**Roles Count**',`${message.guild.roles.size}`,true)
+                  
+                        .addField('**Members Count**',`${message.guild.memberCount}`,true)
+                  
+                        .addField('**Online Members**',`${message.guild.members.filter(m=>m.presence.status == 'online').size}`,true)
+                  
+                        .addField('**Text Channels**',`${message.guild.channels.filter(m => m.type === 'text').size}`,true)
+                  
+                        .addField('**Voice Channels**',`${message.guild.channels.filter(m => m.type === 'voice').size}`,true)
+                  
+                        .addField('**Server Owner**',`**${message.guild.owner}**`,true)
+                  
+                        .addField('**Server Id**',`**${message.guild.id}**`,true)
+                  
+                        .addField('**Server was created in**',message.guild.createdAt.toLocaleString())
+                  
+                        message.channel.send({embed:embed})
+                  
+                      break;              
+                case 'cal':
+                        let args = message.content.split(" ").slice(1);
+
+                        const question = args.join(' ');
+                
+                    if (args.length < 1) {
+                
+                        message.reply('Specify a equation, please.');
+                
+                } else {    let answer;
+                
+                    try {
+                
+                        answer = math.eval(question);
+                
+                    } catch (err) {
+                
+                        message.reply(`Error: ${err}`);
+                
+                    }
+                
+                    
+                
+                    const embed = new Discord.RichEmbed()
+                
+                    .addField("**Input**: ",`**${question}**`, true)
+                
+                    .addField("**Output**: ",`**${answer}**`, true)
+                
+                    message.channel.send(embed)  .catch(console.error);      
+                }    break;
                            
     }
     if(message.content.startsWith('cool')){
