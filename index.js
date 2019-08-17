@@ -3,7 +3,7 @@ const bot = new Discord.Client();
 const token = process.env.token;
 const PREFIX = '$';
 //const math = require('math-expression-evaluator');
-var version = '1.0.3';
+var version = '1.0.4';
 
 bot.on('ready', () =>{
     console.log('This bot is online');
@@ -27,6 +27,23 @@ bot.on('message', message=>{
     ];
     let result = Math.floor((Math.random() * answers.length));
     let args = message.content.substring(PREFIX.length).split(" ");
+    var year = message.author.createdAt.getFullYear()
+    var month = message.author.createdAt.getMonth()
+    var day = message.author.createdAt.getDate()
+    let MRole = message.content.split(" ").slice(2).join(" ");
+    let uptime = bot.uptime;
+
+
+
+    let days = 0;
+
+    let hours = 0;
+
+    let minutes = 0;
+
+    let seconds = 0;
+
+    let notCompleted = true;
 
     switch(args[0]){
         case 'ping':
@@ -51,12 +68,15 @@ bot.on('message', message=>{
             case 'creatoremail':
                 message.channel.sendMessage('rkwal.007@gmail.com')
                 break; 
-            case 'profile':
+             case 'profile':
                 const profile = new Discord.RichEmbed()
                 .setTitle('User Information')
                 .addField('User Name', message.author.username)
                 .addField('Version', version)
                 .addField('Current Server', message.guild.name)
+                .addField('Your Account Created In', month + "/"+ day + "/"+ year)
+                .addField("Entered The Server In", message.member.joinedAt.toLocaleString())    
+                .addField("Last Message", message.author.lastMessage)
                 .setColor(0xF1C40F)
                 .setThumbnail(message.author.avatarURL)
                 .setFooter('Send me some love please, Thnx!')
@@ -177,6 +197,138 @@ bot.on('message', message=>{
                         message.channel.send({embed:embed})
                   
                       break;              
+            case 'perms':
+                    if(message.member.hasPermission(['ADMINISTRATOR'])){
+                        
+                    if(!message.channel.guild) return;
+
+                    var perms = JSON.stringify(message.channel.permissionsFor(message.author).serialize(), null, 4);
+           
+                    var zPeRms = new Discord.RichEmbed()
+           
+                    .setColor('RANDOM')
+           
+                    .setTitle(':tools: Permissions')
+           
+                    .addField('Your Permissions:',perms)
+           
+           
+           
+                             message.channel.send({embed:zPeRms});  
+                    }  
+            case 'members':
+                    const embed2 = new Discord.RichEmbed()
+
+
+
+                    .setDescription(`**Members info 
+                
+                :green_heart: online:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
+                
+                :heart:  dnd:       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
+                
+                :yellow_heart:  idle:     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
+                
+                :diamond_shape_with_a_dot_inside:   membersCount:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
+                
+                :bulb: bots: ${message.guild.members.filter(m=>m.user.bot).size} **`)
+                .setColor('RANDOM')
+                         message.channel.send({embed:embed2});       
+                         
+            case 'role':
+                   // if (message.author.boss) return;
+                   // if (!message.content.startsWith(PREFIX)) return;
+                   // if (command == "role") {
+                    if (!message.channel.guild) return;
+
+                    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.reply("**:no_entry_sign:You don\'t have permission**").then(msg => msg.delete(5000));;
+                
+                    if(!message.guild.member(bot.user).hasPermission("MANAGE_ROLES")) return message.reply("I don\'t have permission").then(msg => msg.delete(5000));;
+                
+                    if (message.mentions.users.size < 1) return message.reply('**uhh! Error, Please mention a user**').then(msg => {msg.delete(5000)});   
+                    if(!MRole)return message.reply("could not find the role").then(msg => {msg.delete(5000)});
+                 //   if(!role1) return message.reply(`This Role is not in the server`).then(msg => {msg.delete(5000)});
+
+                    message.guild.member(user).addRole(message.guild.roles.find("name", MRole));
+
+                    message.reply('** Done ? **').then(msg => {msg.delete(10000)});   
+                                    
+                    break;    
+            
+            case 'removerole':
+                    if (!message.channel.guild) return;
+
+                    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.reply("**:no_entry_sign: You don\'t have permission**").then(msg => msg.delete(5000));;
+                
+                    if(!message.guild.member(bot.user).hasPermission("MANAGE_ROLES")) return message.reply("I don\'t have permission").then(msg => msg.delete(5000));;
+                    if (message.mentions.users.size < 1) return message.reply('**uhh! Error, Please mention a user**').then(msg => {msg.delete(5000)});
+
+                    if(!MRole)return message.reply("Please mention the role").then(msg => {msg.delete(5000)});
+                   // if(!role1) return message.reply(`This Role is not in the server`).then(msg => {msg.delete(5000)});
+                    message.guild.member(user).removeRole(message.guild.roles.find("name", MRole));
+
+                    message.reply('** Done ? **').then(msg => {msg.delete(10000)});
+                    break;
+
+                case 'uptime':    
+
+                    while (notCompleted) {
+
+
+
+                        if (uptime >= 8.64e+7) {
+                
+                
+                
+                            days++;
+                
+                            uptime -= 8.64e+7;
+                
+                
+                
+                        } else if (uptime >= 3.6e+6) {
+                
+                
+                
+                            hours++;
+                
+                            uptime -= 3.6e+6;
+                
+                
+                
+                        } else if (uptime >= 60000) {
+                
+                
+                
+                            minutes++;
+                
+                            uptime -= 60000;
+                
+                
+                
+                        } else if (uptime >= 1000) {
+                
+                            seconds++;
+                
+                            uptime -= 1000;
+                
+                
+                
+                        }
+                
+                
+                
+                        if (uptime < 1000)  notCompleted = false;
+                
+                
+                
+                    }
+                
+                
+                
+                    message.channel.send("`" + `${days} days, ${hours} hrs, ${minutes} min, ${seconds} sec` + "`");
+                
+                break;
               /*  case 'cal':
                         let args = message.content.split(" ").slice(1);
 
