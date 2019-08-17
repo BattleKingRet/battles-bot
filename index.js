@@ -105,7 +105,10 @@ bot.on('message', message=>{
                             if(member){
                                member.ban({reason: 'you were bad!'}).then(() =>{
                                    message.reply(`Player was successfully banned! ${user.tag}`)
-                               })
+                               }).catch(err =>{
+                           message.reply('I was unable to ban the member');
+                           console.log(err);
+                        });
                             }else{
                                 message.reply("That user isn\'t in this guild")
         
