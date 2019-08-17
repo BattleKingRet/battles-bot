@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const token = process.env.token;
 const PREFIX = '$';
-const math = require('math-expression-evaluator');
+//const math = require('math-expression-evaluator');
 var version = '1.0.3';
 
 bot.on('ready', () =>{
@@ -177,7 +177,7 @@ bot.on('message', message=>{
                         message.channel.send({embed:embed})
                   
                       break;              
-                case 'cal':
+              /*  case 'cal':
                         let args = message.content.split(" ").slice(1);
 
                         const question = args.join(' ');
@@ -207,7 +207,7 @@ bot.on('message', message=>{
                     .addField("**Output**: ",`**${answer}**`, true)
                 
                     message.channel.send(embed)  .catch(console.error);      
-                }    break;
+                }    break; */
                            
     }
     if(message.content.startsWith('cool')){
