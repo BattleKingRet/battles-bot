@@ -43,8 +43,10 @@ bot.on('message', message=>{
             }  
             break;
         case 'clear':
+            if(message.member.hasPermission(['MANAGE_MESSAGES'])){
             if(!args[1]) return message.reply('Error, please define the amount of messages')
             message.channel.bulkDelete(args[1]);
+            }
             break;
             case 'creatoremail':
                 message.channel.sendMessage('rkwal.007@gmail.com')
