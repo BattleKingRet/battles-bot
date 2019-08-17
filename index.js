@@ -13,7 +13,19 @@ bot.on('ready', () =>{
 bot.on('message', message=>{
     const user = message.mentions.users.first();
     const member = message.guild.member(user);
-
+    let askedQuestion = message.content.split(" ").slice(1).join(" ");
+    const answers = [
+        'As I see it, Then Yes',
+        'Ask again Later',
+        'I don\'t know',
+        'It is certain',
+        'Maybe yes',
+        'Maybe not',
+        'Very doubtful',
+        'No! For sure',
+        'Yes! Ofcourse'
+    ];
+    let result = Math.floor((Math.random() * answers.length));
     let args = message.content.substring(PREFIX.length).split(" ");
 
     switch(args[0]){
@@ -117,6 +129,19 @@ bot.on('message', message=>{
                         message.reply(message.author.avatarURL)
                     }
                         break;
+            case '8ball':
+                        if(!askedQuestion) {
+                            message.reply("Please ask a question");
+                        }
+                        else{
+                            let embed = new Discord.RichEmbed()
+                            .setAuthor(message.author.tag)
+                            .setColor("#FF9900")
+                            .addField("Your Question:", askedQuestion)
+                            .addField("Answer:", answers[result]);
+                            message.channel.send({embed}).catch(e => logger.error(e));
+                        }
+                    break; 
                            
     }
     if(message.content.startsWith('cool')){
