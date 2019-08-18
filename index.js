@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const token = process.env.token;
-const PREFIX = '$';
+const PREFIX = 'r!';
 //const math = require('math-expression-evaluator');
 var version = '1.0.4';
 
