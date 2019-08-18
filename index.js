@@ -234,6 +234,7 @@ bot.on('message', message=>{
                 :bulb: bots: ${message.guild.members.filter(m=>m.user.bot).size} **`)
                 .setColor('RANDOM')
                          message.channel.send({embed:embed2});       
+                       break;
                          
             case 'role':
                    // if (message.author.boss) return;
