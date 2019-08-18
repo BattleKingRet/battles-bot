@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const token = process.env.token;
-const PREFIX = 'r!';
+const PREFIX = '';
 //const math = require('math-expression-evaluator');
 var version = '1.0.4';
 
@@ -46,7 +46,7 @@ bot.on('message', message=>{
     let notCompleted = true;
 
     switch(args[0]){
-        case 'ping':
+        case '$ping':
             message.channel.sendMessage('pong!')
             break;
         case 'credits':
