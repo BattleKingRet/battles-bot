@@ -216,6 +216,7 @@ bot.on('message', message=>{
            
                              message.channel.send({embed:zPeRms});  
                     }  
+                            break;
             case 'members':
                     const embed2 = new Discord.RichEmbed()
 
