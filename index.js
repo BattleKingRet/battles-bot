@@ -49,26 +49,26 @@ bot.on('message', message=>{
         case '$ping':
             message.channel.sendMessage('pong!')
             break;
-        case 'credits':
+        case '$credits':
             message.channel.sendMessage('Rohan(Ret) only!')
             break;
-        case 'info':
+        case '$info':
             if(args[1] === 'version'){
                 message.channel.sendMessage('Version ' + version);
             }else{
                 message.channel.sendMessage('Invalid Command')
             }  
             break;
-        case 'clear':
+        case '$clear':
             if(message.member.hasPermission(['MANAGE_MESSAGES'])){
             if(!args[1]) return message.reply('Error, please define the amount of messages')
             message.channel.bulkDelete(args[1]);
             }
             break;
-            case 'creatoremail':
+            case '$creatoremail':
                 message.channel.sendMessage('rkwal.007@gmail.com')
                 break; 
-             case 'profile':
+             case '$profile':
                 const profile = new Discord.RichEmbed()
                 .setTitle('User Information')
                 .addField('User Name', message.author.username)
@@ -82,19 +82,19 @@ bot.on('message', message=>{
                 .setFooter('Send me some love please, Thnx!')
                 message.channel.sendEmbed(profile);
                 break;
-           /* case 'send':
+           /* case '$send':
                 const attachment = new Attachment('https://cbsnews1.cbsistatic.com/hub/i/2016/03/23/38e32f54-b910-4612-8852-be9e0fbdbf73/cat-istock.jpg')
                 message.channel.send(message.author, attachment);
                 break;
-            case 'sendlocal':
+            case '$sendlocal':
                 const attachment2 = new Attachment('./pexels-photo-1174122.jpg');
                 message.channel.send(message.author, attachment2);
                 break;   
-            case 'rules':
+            case '$rules':
                 const attachment3 = new Attachment('./rules.txt')
                 message.channel.send(message.author, attachment3);
                 break;   */
-            case 'kick':
+            case '$kick':
                 
                 if(message.member.hasPermission(['KICK_MEMBERS'])){
 
@@ -118,7 +118,7 @@ bot.on('message', message=>{
                     message.reply('You fkin noob cant kick someone, useless boi')
                 }
                 break;
-                case 'ban':
+                case '$ban':
                 
                     if(message.member.hasPermission(['BAN_MEMBERS'])){
         
@@ -142,7 +142,7 @@ bot.on('message', message=>{
                             message.reply('You fkin noob cant ban someone, useless boi')
                         }
                         break;
-            case 'av':
+            case '$av':
                         if(user){
                     
                             if(member){
@@ -154,7 +154,7 @@ bot.on('message', message=>{
                         message.reply(message.author.avatarURL)
                     }
                         break;
-            case '8ball':
+            case '$8ball':
                         if(!askedQuestion) {
                             message.reply("Please ask a question");
                         }
@@ -167,7 +167,7 @@ bot.on('message', message=>{
                             message.channel.send({embed}).catch(e => logger.error(e));
                         }
                     break; 
-            case 'server':
+            case '$server':
                         let embed = new Discord.RichEmbed()
 
                         .setColor('RANDOM')
@@ -197,7 +197,7 @@ bot.on('message', message=>{
                         message.channel.send({embed:embed})
                   
                       break;              
-            case 'perms':
+            case '$perms':
                     if(message.member.hasPermission(['ADMINISTRATOR'])){
                         
                     if(!message.channel.guild) return;
@@ -217,7 +217,7 @@ bot.on('message', message=>{
                              message.channel.send({embed:zPeRms});  
                     }  
                             break;
-            case 'members':
+            case '$members':
                     const embed2 = new Discord.RichEmbed()
 
 
@@ -237,7 +237,7 @@ bot.on('message', message=>{
                          message.channel.send({embed:embed2});       
                        break;
                          
-            case 'role':
+            case '$role':
                    // if (message.author.boss) return;
                    // if (!message.content.startsWith(PREFIX)) return;
                    // if (command == "role") {
@@ -257,7 +257,7 @@ bot.on('message', message=>{
                                     
                     break;    
             
-            case 'removerole':
+            case '$removerole':
                     if (!message.channel.guild) return;
 
                     if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.reply("**:no_entry_sign: You don\'t have permission**").then(msg => msg.delete(5000));;
@@ -272,7 +272,7 @@ bot.on('message', message=>{
                     message.reply('** Done ? **').then(msg => {msg.delete(10000)});
                     break;
 
-                case 'uptime':    
+                case '$uptime':    
 
                     while (notCompleted) {
 
@@ -332,7 +332,7 @@ bot.on('message', message=>{
                 
                 break;
             
-             /* case 'drag':
+             /* case '$drag':
                 if (message.member.hasPermission("MOVE_MEMBERS")) {
 
                     if (message.mentions.users.size === 0) {
@@ -387,7 +387,7 @@ bot.on('message', message=>{
                    
                     };
             break; */
-              /*  case 'cal':
+              /*  case '$cal':
                         let args = message.content.split(" ").slice(1);
 
                         const question = args.join(' ');
@@ -418,7 +418,7 @@ bot.on('message', message=>{
                 
                     message.channel.send(embed)  .catch(console.error);      
                 }    break; */
-            case 'bot':
+            case '$bot':
                 
 
                    let embed3 = new Discord.RichEmbed()
@@ -453,7 +453,7 @@ bot.on('message', message=>{
             
                               message.channel.send({embed:embed3})      
                               break;
-            case 'serverbans':
+            case '$serverbans':
                 message.guild.fetchBans()
 
                 .then(bans => message.channel.send(`Number of banned persons **${bans.size}** `))      
