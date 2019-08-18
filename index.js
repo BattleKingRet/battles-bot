@@ -332,7 +332,7 @@ bot.on('message', message=>{
                 
                 break;
             
-             case 'drag':
+             /* case 'drag':
                 if (message.member.hasPermission("MOVE_MEMBERS")) {
 
                     if (message.mentions.users.size === 0) {
@@ -386,7 +386,7 @@ bot.on('message', message=>{
                    message.react("❌")
                    
                     };
-            break; 
+            break; */
               /*  case 'cal':
                         let args = message.content.split(" ").slice(1);
 
