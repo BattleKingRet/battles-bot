@@ -417,6 +417,11 @@ bot.on('message', message=>{
                 
                     message.channel.send(embed)  .catch(console.error);      
                 }    break; */
+            case 'serverbans':
+                message.guild.fetchBans()
+
+                .then(bans => message.channel.send(`Number of banned persons **${bans.size}** `))      
+                break;
                            
     }
     if(message.content.startsWith('cool')){
