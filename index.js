@@ -330,6 +330,62 @@ bot.on('message', message=>{
                     message.channel.send("`" + `${days} days, ${hours} hrs, ${minutes} min, ${seconds} sec` + "`");
                 
                 break;
+            
+             case 'drag':
+                if (message.member.hasPermission("MOVE_MEMBERS")) {
+
+                    if (message.mentions.users.size === 0) {
+                   
+                    return message.channel.send("``Use the command like: " +prefix+ "drag [USER]``")
+                   
+                   }
+                   
+                   if (message.member.voiceChannel != null) {
+                   
+                    if (message.mentions.members.first().voiceChannel != null) {
+                   
+                    var authorchannel = message.member.voiceChannelID;
+                   
+                    var usermentioned = message.mentions.members.first().id;
+                   
+                   var embed4 = new Discord.RichEmbed()
+                   
+                    .setTitle("Succes!")
+                   
+                    .setColor("#000000")
+                   
+                    .setDescription(`Successfully dragged <@${usermentioned}>  `)
+                   
+                   var embed5 = new Discord.RichEmbed()
+                   
+                   .setTitle(`You are Moved in ${message.guild.name}`)
+                   
+                    .setColor("RANDOM")
+                   
+                   .setDescription(`**<@${message.author.id}> Moved You To His Channel!\nServer --> ${message.guild.name}**`)
+                   
+                    message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed4))
+                   
+                   message.guild.members.get(usermentioned).send(embed5)
+                   
+                   } else {
+                   
+                   message.channel.send("You can\'t drag "+ message.mentions.members.first() +" `This member must be in my voice room`")
+                   
+                   }
+                   
+                   } else {
+                   
+                    message.channel.send("**``You have to be in a voice room to pull the member to you.``**")
+                   
+                   }
+                   
+                   } else {
+                   
+                   message.react("❌")
+                   
+                    };
+            break; 
               /*  case 'cal':
                         let args = message.content.split(" ").slice(1);
 
