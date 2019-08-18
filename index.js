@@ -417,6 +417,41 @@ bot.on('message', message=>{
                 
                     message.channel.send(embed)  .catch(console.error);      
                 }    break; */
+            case 'bot':
+                
+
+                   let embed3 = new Discord.RichEmbed()
+            
+                        .setAuthor(bot.user.username,bot.user.avatarURL)
+            
+                        .setThumbnail(bot.user.avatarURL)
+            
+                        .setColor('RANDOM')
+            
+                        .setTitle('INFO Ret\'s Cop ')
+            
+                        .addField('**My Ping**' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
+            
+                        .addField('**RAM Usage**', `${(process.memoryUsage().rss / 1048576).toFixed()}MB`, true)
+            
+                        .addField('**servers**', bot.guilds.size, true)
+            
+                        .addField('**channels**' , ` ${bot.channels.size} ` , true)
+            
+                        .addField('**Users**' ,` ${bot.users.size} ` , true)
+            
+                        .addField('**My Name**' , ` ${bot.user.tag} ` , true)
+            
+                        .addField('**My ID**' , ` ${bot.user.id} ` , true)
+            
+                              .addField('**My Prefix**' , ` $ ` , true)
+            
+                              .addField('**My Language**' , ` Java Script ` , true)
+            
+                              .setFooter('By | Ret')
+            
+                              message.channel.send({embed:embed3})      
+                              break;
             case 'serverbans':
                 message.guild.fetchBans()
 
