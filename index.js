@@ -336,7 +336,7 @@ bot.on('message', message=>{
 
                     if (message.mentions.users.size === 0) {
                    
-                    return message.channel.send("``Use the command like: " +prefix+ "drag [USER]``")
+                    return message.channel.send("``Use the command like: " +PREFIX+ "drag [USER]``")
                    
                    }
                    
