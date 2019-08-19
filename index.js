@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const ms = require("ms");
+//const ms = require("ms");
 const token = process.env.token;
 const PREFIX = '';
 //const math = require('math-expression-evaluator');
