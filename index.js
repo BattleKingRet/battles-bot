@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const ms = require("ms");
 const token = process.env.token;
 const PREFIX = '';
 //const math = require('math-expression-evaluator');
@@ -458,6 +459,96 @@ bot.on('message', message=>{
 
                 .then(bans => message.channel.send(`Number of banned persons **${bans.size}** `))      
                 break;
+             case 'mute':
+               
+        if(!message.member.hasPermission('MANAGE_ROLES')) return
+
+                        if(!message.guild.member(bot.user).hasPermission("MANAGE_ROLES")) return message.reply("**I Don't Have `MANAGE_ROLES` Permission**").then(msg => msg.delete(6000))
+                        
+                      //  var mute = message.content.split(" ")[0];
+                        
+                       // mute = mute.slice(PREFIX.length);
+                        
+                        var args1 = message.content.split(" ").slice(1);  
+                        let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args1[0]));
+
+                //    let tomute = message.guild.member(message.mentions.first() || message.guild.members.get(args[0]));
+                    if(!tomute) return message.reply("No user specified");
+
+                  //  let reaason = args1.slice(1).join(' ');
+                  //   if(!reaason) reaason = "No reason provided";
+
+                    if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute them");
+                    let muterole = message.guild.roles.find(r => r.name === "muted");
+                    tomute.addRole(muterole.id).then(() => {
+                        message.delete()
+
+                        let muteping = new Discord.RichEmbed()
+                        .setAuthor(`Muted`, message.guild.iconURL)
+                        .setColor(0x421C52)
+                        .addField("Time", mutetime)
+                        //.addField("Reason", reaason)
+                        .setDescription(tomute.user.tag);
+                        tomute.send(muteping)
+                    })
+                    if(!muterole){
+                        try{
+                          muterole = await message.guild.createRole({
+                              name: "muted",
+                              color: "#000000",
+                              permissions:[]
+                          })
+                          message.guild.channels.forEach(async (channel, id) => {
+                              await channel.overwritePermissions(muterole, {
+                                  SEND_MESSAGES: false,
+                                  ADD_REACTIONS: false
+                              });
+                          });
+                        }catch(e){
+                            console.log(e.stack);
+                        }
+                    }
+                    let mutetime = args1[1]
+                    if(!mutetime) return message.reply("You didn't specify a time");
+                
+                    await(tomute.addRole(muterole.id));
+                    message.reply(`<@${tomute.id}> has been muted for ${ms(ms(mutetime))}`);
+                    setTimeout(function(){
+                      tomute.removeRole(muterole.id);
+                      message.channel.send(`<@${tomute.id}> has been unmuted`);
+                    }, ms(mutetime));
+                
+                    break;
+            case 'unmute':
+            if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**You don\'t have permission**:x: ").then(m => m.delete(5000));
+
+            if(!message.guild.member(bot.user).hasPermission("MANAGE_ROLES")) return message.reply("**I Don't Have `MANAGE_ROLES` Permission**").then(msg => msg.delete(6000))
+            
+            
+            
+              let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+            
+              if(!toMute) return message.channel.sendMessage("**That person is not muted**:x: ");
+            
+            
+            
+              let role = message.guild.roles.find (r => r.name === "muted");
+            
+              
+            
+              if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**That person is not muted**:x:")
+            
+            
+            
+              await toMute.removeRole(role)
+            
+              message.channel.sendMessage("**Successfully unmuted**:white_check_mark:");
+            
+            
+            
+              
+          
+            break;    
                            
     }
     if(message.content.startsWith('cool')){
