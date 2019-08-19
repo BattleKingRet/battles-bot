@@ -60,12 +60,12 @@ bot.on('message', async message=>{
                 message.channel.sendMessage('Invalid Command')
             }  
             break;
-        case '$clear':
+      /*  case '$clear':
             if(message.member.hasPermission(['MANAGE_MESSAGES'])){
             if(!args[1]) return message.reply('Error, please define the amount of messages')
             message.channel.bulkDelete(args[1]);
             }
-            break;
+            break;*/
             case '$creatoremail':
                 message.channel.sendMessage('rkwal.007@gmail.com')
                 break; 
@@ -568,6 +568,12 @@ bot.on('message', async message=>{
     if(message.content.startsWith('Cool')){
         message.react('😎')
     }
+   if(message.content.startsWith('$clear')){
+  if(message.member.hasPermission(['MANAGE_MESSAGES'])){
+            if(!args[1]) return message.reply('Error, please define the amount of messages')
+            message.channel.bulkDelete(args[1]);
+            }  
+}
 })
 
 bot.login(token).catch(err => console.log(err));
