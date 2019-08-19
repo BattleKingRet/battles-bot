@@ -459,7 +459,9 @@ bot.on('message', message=>{
 
                 .then(bans => message.channel.send(`Number of banned persons **${bans.size}** `))      
                 break;
-             case 'mute':
+            
+        
+            case '$mute':
                
         if(!message.member.hasPermission('MANAGE_ROLES')) return
 
@@ -519,7 +521,9 @@ bot.on('message', message=>{
                     }, ms(mutetime));
                 
                     break;
-            case 'unmute':
+            
+            
+            case '$unmute':
             if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**You don\'t have permission**:x: ").then(m => m.delete(5000));
 
             if(!message.guild.member(bot.user).hasPermission("MANAGE_ROLES")) return message.reply("**I Don't Have `MANAGE_ROLES` Permission**").then(msg => msg.delete(6000))
