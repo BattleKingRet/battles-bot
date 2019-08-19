@@ -3,7 +3,7 @@ const bot = new Discord.Client();
 const ms = require("ms");
 const token = process.env.token;
 const PREFIX = '';
-//const math = require('math-expression-evaluator');
+const math = require('math-expression-evaluator');
 var version = '1.0.4';
 
 bot.on('ready', () =>{
@@ -388,7 +388,7 @@ bot.on('message', async message=>{
                    
                     };
             break; */
-              /*  case '$cal':
+                case '$cal':
                         let args = message.content.split(" ").slice(1);
 
                         const question = args.join(' ');
@@ -418,7 +418,7 @@ bot.on('message', async message=>{
                     .addField("**Output**: ",`**${answer}**`, true)
                 
                     message.channel.send(embed)  .catch(console.error);      
-                }    break; */
+                }    break; 
             case '$bot':
                 
 
