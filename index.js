@@ -11,7 +11,7 @@ bot.on('ready', () =>{
     bot.user.setActivity('Ret', {type: 'LISTENING'}).catch(console.error);
 })
  
-bot.on('message', message=>{
+bot.on('message', async message=>{
     const user = message.mentions.users.first();
     const member = message.guild.member(user);
     let askedQuestion = message.content.split(" ").slice(1).join(" ");
