@@ -461,7 +461,7 @@ bot.on('message', async message=>{
                 break;
             
         
-        /*    case '$mute':
+            case '$mute':
                
         if(!message.member.hasPermission('MANAGE_ROLES')) return
 
@@ -552,7 +552,7 @@ bot.on('message', async message=>{
             
               
           
-            break;    */
+            break;    
                            
     }
     if(message.content.startsWith('cool')){
