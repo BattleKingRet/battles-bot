@@ -482,7 +482,7 @@ bot.on('message', async message=>{
 
                     if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute them");
                     let muterole = message.guild.roles.find(r => r.name === "muted");
-                    tomute.addRole(muterole.id).then(() => {
+                    tomute.addRole(muterole).then(() => {
                         message.delete()
 
                       /*  let muteping = new Discord.RichEmbed()
