@@ -485,13 +485,13 @@ bot.on('message', async message=>{
                     tomute.addRole(muterole.id).then(() => {
                         message.delete()
 
-                        let muteping = new Discord.RichEmbed()
+                      /*  let muteping = new Discord.RichEmbed()
                         .setAuthor(`Muted`, message.guild.iconURL)
                         .setColor(0x421C52)
                         .addField("Time", mutetime)
                         //.addField("Reason", reaason)
                         .setDescription(tomute.user.tag);
-                        tomute.send(muteping)
+                        tomute.send(muteping)*/
                     })
                     if(!muterole){
                         try{
