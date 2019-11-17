@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { promptMessage } = require ("./functions.js");
 const bot = new Discord.Client();
 const ms = require("ms");
 const token = process.env.token;
@@ -553,6 +554,42 @@ bot.on('message', async message=>{
               
           
             break;    
+            
+       case 'rps': 
+            
+            const embed69 = new Discord.RichEmbed()
+                .setColor("#ffffff")
+                .setFooter(message.guild.me.displayName, message.author.avatarURL)
+                .setDescription("Add a reaction to one of these to play the game")
+                .setTimestamp();
+                
+                const m = await message.channel.send(embed69);
+                const reacted = await promptMessage(m, message.author, 30, chooseArr);
+
+                const botChoice = chooseArr[Math.floor(Math.random() * chooseArr.length)];
+
+                const result5 = await getResult(reacted, botChoice);
+                await m.clearReactions();
+
+                    embed69
+                    .setDescription("")
+                    .addField(result5, `${reacted} vs ${botChoice}`);
+
+                    m.edit(embed69);
+
+                function getResult(me, clientChosen) {
+                    if((me === "⛰️" && clientChosen === "✂️") ||
+                        (me ==="📰" && clientChosen === "⛰️") ||
+                        (me === "✂️" && clientChosen === "📰")) {
+                            return "You won!";
+                        } else if(me === clientChosen){
+                            return "Its a tie";
+                        } else {
+                            return "You lost!";
+
+                        }
+                }
+                break;     
                            
     }
     if(message.content.startsWith('cool')){
