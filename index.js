@@ -555,7 +555,7 @@ bot.on('message', async message=>{
           
             break;    
             
-       case 'rps': 
+       case '$rps': 
             
             const embed69 = new Discord.RichEmbed()
                 .setColor("#ffffff")
