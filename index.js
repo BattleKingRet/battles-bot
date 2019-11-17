@@ -3,6 +3,8 @@ const { promptMessage } = require ("./functions.js");
 const bot = new Discord.Client();
 const ms = require("ms");
 const token = process.env.token;
+const chooseArr = ["⛰️","📰","✂️"];
+
 const PREFIX = '';
 const math = require('math-expression-evaluator');
 var version = '1.0.4';
