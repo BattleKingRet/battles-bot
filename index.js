@@ -598,7 +598,7 @@ bot.on('message', async message=>{
                 }
                 break;   
             
-            case 'rat':
+            case '$rat':
             message.channel.send(emoji("645635631988604969"));
             break; 
                            
