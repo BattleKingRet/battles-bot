@@ -9,6 +9,11 @@ const PREFIX = '';
 const math = require('math-expression-evaluator');
 var version = '1.0.4';
 
+function emoji (id)
+{
+    return bot.emojis.get(id).toString();
+}
+
 bot.on('ready', () =>{
     console.log('This bot is online');
     bot.user.setActivity('Ret', {type: 'LISTENING'}).catch(console.error);
@@ -591,7 +596,11 @@ bot.on('message', async message=>{
 
                         }
                 }
-                break;     
+                break;   
+            
+            case 'rat':
+            message.channel.send(emoji("645635631988604969"));
+            break; 
                            
     }
     if(message.content.startsWith('cool')){
