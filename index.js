@@ -444,9 +444,9 @@ bot.on('message', async message=>{
             
                         .addField('**RAM Usage**', `${(process.memoryUsage().rss / 1048576).toFixed()}MB`, true)
             
-                        .addField('**servers**', bot.guilds.size, true)
+                        .addField('**Servers**', bot.guilds.size, true)
             
-                        .addField('**channels**' , ` ${bot.channels.size} ` , true)
+                        .addField('**Channels**' , ` ${bot.channels.size} ` , true)
             
                         .addField('**Users**' ,` ${bot.users.size} ` , true)
             
@@ -456,7 +456,7 @@ bot.on('message', async message=>{
             
                               .addField('**My Prefix**' , ` $ ` , true)
             
-                              .addField('**My Language**' , ` Java Script ` , true)
+                              .addField('**My Language**' , ` JavaScript ` , true)
             
                               .setFooter('By | Ret')
             
