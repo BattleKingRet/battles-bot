@@ -611,7 +611,7 @@ bot.on('message', async message=>{
         message.channel.send('aww... man')
     }
     if(message.content.startsWith('Creeper')){
-        message.channel.send('aww... man')
+        message.channel.send('Aww... Man')
     }
     if(message.content.startsWith('Cool')){
         message.react('😎')
