@@ -605,6 +605,26 @@ bot.on('message', async message=>{
             case '$pplit':
             message.channel.send(emoji("727905963746525214"));
             break;
+            
+            case 'hammer':
+            message.channel.send(emoji("717232359400800298"));
+            break;
+            
+            case '$ricass':
+            message.channel.send(emoji("717232493975175219"));
+            break;
+            
+            case '$wink':
+            message.channel.send(emoji("723523331965583451"));
+            break;
+            
+            case '$smoochies':
+            message.channel.send(emoji("720464723669417984"));
+            break;
+            
+            case '$vibecheck':
+            message.channel.send(emoji("720471876593385474"));
+            break;
                            
     }
     if(message.content.startsWith('cool')){
