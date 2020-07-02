@@ -606,7 +606,7 @@ bot.on('message', async message=>{
             message.channel.send(emoji("727905963746525214"));
             break;
             
-            case 'hammer':
+            case '$hammer':
             message.channel.send(emoji("717232359400800298"));
             break;
             
