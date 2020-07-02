@@ -600,7 +600,11 @@ bot.on('message', async message=>{
             
             case '$rat':
             message.channel.send(emoji("645635631988604969"));
-            break; 
+            break;
+            
+            case '$pplit':
+            message.channel.send(emoji("727905963746525214"));
+            break;
                            
     }
     if(message.content.startsWith('cool')){
