@@ -634,9 +634,19 @@ bot.on('message', async message=>{
     if(message.content.startsWith('creeper')){
         message.channel.send('aww... man')
     }
+
     if(message.content.startsWith('Creeper')){
         message.channel.send('Aww... Man')
     }
+
+    if(message.content.startsWith('saffy is amazing')){
+        message.channel.send('No! Saffy is 💩')
+    }
+
+    if(message.content.startsWith('Saffy is amazing')){
+        message.channel.send('No! Saffy is 💩')
+    }
+
     if(message.content.startsWith('Cool')){
         message.react('😎')
     }
