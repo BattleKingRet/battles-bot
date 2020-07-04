@@ -647,6 +647,14 @@ bot.on('message', async message=>{
         message.channel.send('No! Saffy is 💩')
     }
 
+    if(message.content.startsWith('Saffy is 💩')){
+        message.channel.send('Ofc! No doubt in that!!')
+    }
+
+    if(message.content.startsWith('saffy is 💩')){
+        message.channel.send('Ofc! No doubt in that!!')
+    }
+
     if(message.content.startsWith('Cool')){
         message.react('😎')
     }
