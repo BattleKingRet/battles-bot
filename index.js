@@ -667,6 +667,10 @@ bot.on('message', async message=>{
         message.react('💩')
     }
 
+    if(message.content.startsWith('SAFFY')){
+        message.react('💩')
+    }
+
    if(message.content.startsWith('$clear')){
   if(message.member.hasPermission(['MANAGE_MESSAGES'])){
             if(!args[1]) return message.reply('Error, please define the amount of messages')
