@@ -671,6 +671,18 @@ bot.on('message', async message=>{
         message.react('💩')
     }
 
+    if(message.content.startsWith('Lofe')){
+        message.react('👑')
+    }
+
+    if(message.content.startsWith('lofe')){
+        message.react('👑')
+    }
+
+    if(message.content.startsWith('LOFE')){
+        message.react('👑')
+    }
+
    if(message.content.startsWith('$clear')){
   if(message.member.hasPermission(['MANAGE_MESSAGES'])){
             if(!args[1]) return message.reply('Error, please define the amount of messages')
