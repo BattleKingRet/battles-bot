@@ -1,2 +1,3 @@
-# battles-bot
-hosting on heroku
+# Battles Bot
+# This is a discord bot.
+
