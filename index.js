@@ -727,6 +727,10 @@ bot.on('message', async message=>{
     if(message.content.startsWith('LOFE')){
         message.react('👑')
     }
+
+    if(message.content.startsWith('$<@{bot.user.id}> say hi to saffy')){
+        message.channel.send('Hii <@617587622084345856>')
+    }
     
     if (parts[0] === "$image") { // Check if first part of message is image command
  
