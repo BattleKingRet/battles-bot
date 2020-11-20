@@ -728,7 +728,7 @@ bot.on('message', async message=>{
         message.react('👑')
     }
 
-    if(message.content.startsWith('$<@{bot.user.id}> say hi to saffy')){
+    if(message.content.startsWith('<@${bot.user.id}> say hi to saffy')){
         message.channel.send('Hii <@617587622084345856>')
     }
     
