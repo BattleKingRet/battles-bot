@@ -684,53 +684,11 @@ bot.on('message', async message=>{
         message.channel.send('Aww... Man')
     }
 
-    if(message.content.startsWith('saffy is amazing')){
-        message.channel.send('No! Saffy is 💩')
-    }
-
-    if(message.content.startsWith('Saffy is amazing')){
-        message.channel.send('No! Saffy is 💩')
-    }
-
-    if(message.content.startsWith('Saffy is 💩')){
-        message.channel.send('Ofc! No doubt in that!!')
-    }
-
-    if(message.content.startsWith('saffy is 💩')){
-        message.channel.send('Ofc! No doubt in that!!')
-    }
 
     if(message.content.startsWith('Cool')){
         message.react('😎')
     }
 
-    if(message.content.startsWith('Saffy')){
-        message.react('💩')
-    }
-
-    if(message.content.startsWith('saffy')){
-        message.react('💩')
-    }
-
-    if(message.content.startsWith('SAFFY')){
-        message.react('💩')
-    }
-
-    if(message.content.startsWith('Lofe')){
-        message.react('👑')
-    }
-
-    if(message.content.startsWith('lofe')){
-        message.react('👑')
-    }
-
-    if(message.content.startsWith('LOFE')){
-        message.react('👑')
-    }
-
-    if(message.content.startsWith(`<@${bot.user.id}> say hi to saffy`)){
-        message.channel.send('Hii <@617587622084345856>')
-    }
     
     if (parts[0] === "$image") { // Check if first part of message is image command
  
