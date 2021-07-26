@@ -1,4 +1,4 @@
-# Battles Bot
+# Battles Bot by Rohan
 # This is a discord bot.
 
 ## Procfile
